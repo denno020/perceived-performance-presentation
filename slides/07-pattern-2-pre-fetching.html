@@ -1,0 +1,121 @@
+<section>
+  <h2>Pre-fetching</h2>
+  <ul>
+    <li class="fragment">Prevent users from waiting, <em>at all</em></li>
+    <li class="fragment">Any resource can be pre-fetched</li>
+    <li class="fragment">Best to stick to just data/text</li>
+    <li class="fragment">Skip images/media, unless absolutely sure</li>
+    <li class="fragment">Demo</li>
+    <li class="fragment">Downsides?</li>
+    <li class="fragment">Increased bandwidth</li>
+    <li class="fragment">Storage limitations</li>
+    <li class="fragment">Users on slow connections</li>
+    <li class="fragment">Strain on server</li>
+  </ul>
+  <aside class="notes">
+    <ul>
+      <li>
+        Now that we have introduced our local data cache, we can talk about the
+        next pattern, pre-fetching
+      </li>
+      <li>
+        The goal of this pattern is to prevent the user from having to wait at
+        all, giving the user the experience of visiting the product page the
+        second time, but without having yet visited it
+      </li>
+      <li>
+        Pre-fetching is simply downloading resources before the user has asked
+        for them, so that when they are asked for, they're already downloaded
+        and can be instantly shown to the user
+      </li>
+      <li>What kinds of things could we pre-fetch?</li>
+      <li>
+        Literally anything can be pre-fetched, however we do want to consider
+        our users experience and situation before going ahead and pre-fetching
+        everything
+      </li>
+      <li>
+        For example, optimistically pre-fetching data is perfectly fine. That
+        data will be compressed on the server and then send to the browser to be
+        uncompressed and rendered
+      </li>
+      <li>
+        That data could include a second page of products, or a specific
+        products data
+      </li>
+      <li>
+        Pre-fetching JS/CSS files could also be a good option, especially if
+        we've made use of code splitting, and we can anticipate the next route
+        that a user is going to go to
+      </li>
+      <li>
+        Pre-fetching image and other media, however, carries a lot more weight
+        in terms of bandwidth, so it would usually be a bad idea to pre-fetch,
+        especially if we're not sure if the user is definitely going to see it
+      </li>
+      <li>
+        If we know that the user absolutely has to see the image or media in
+        order to continue, then go right ahead and pre-fetch, but otherwise it's
+        not a good idea to optimistically pre-fetch images or other media
+      </li>
+      <li>DEMO</li>
+      <li>Are there any downsides to pre-fetching?</li>
+      <li>
+        Pre-feetching is using more of the users downloda bandwith, however if
+        we're sticking only to downloading data, and that data is compressed on
+        the server before being passed to the browser, then that bandwidth
+        increase will usually be negligible
+      </li>
+      <li>
+        Consider keeping track of what has been pre-fetched, so you're not
+        pre-fetching the same thing twice
+      </li>
+      <li>There are storage limitations within the browser</li>
+      <li>A user is on a slow connection</li>
+      <li>
+        We might want to alter our pre-fetching strategy depending on the users
+        connection.
+      </li>
+      <li>
+        For example, if they have a good connection, then we might be a little
+        more optimistic in pre-fetching, but if they have a poor connection,
+        then we might be a little more conservative
+      </li>
+      <li>
+        We can check the users connection using the Network Information API,
+        which exposes the property effectiveType.
+      </li>
+      <li>This will give a value of "slow-2g", "2g", "3g" or "4g".</li>
+      <li>
+        We could also use the type value to determine if the user is likely on a
+        metered connection or not
+      </li>
+      <li>
+        Another property that is available on the Network Information APII is
+        saveData, which tells the browser if the user has explicitly said that
+        they are saving data, in which case, as responsible developers, we would
+        disable any pre-fetching.
+      </li>
+      <li>Will these extra requests strain the server?</li>
+      <li>They certainly could, especially at scale</li>
+      <li>
+        However, at scale, there will almost certainly be a server caching layer
+        implemented. For example, varnish or fastly, to name just a couple
+      </li>
+      <li>
+        The server caching layer acts to resolve all the requests that it has
+        seen before, so multiple users being on a category page, that is
+        automatically pre-fetching the next page of products, will onlly hit the
+        app server once, with the cache layer serving the response for all other
+        users
+      </li>
+      <li>
+        Out of scope of this talk, but just quickly, the reason the data in this
+        caching layer doesn't go stale is because it can be selectively clear,
+        for example, when prices have been updated, product relative information
+        in the caching layer can be programmatically purged, so the next request
+        will hit the server
+      </li>
+    </ul>
+  </aside>
+</section>
