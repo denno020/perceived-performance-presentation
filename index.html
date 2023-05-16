@@ -8,6 +8,10 @@
     />
 
     <title>Perceived Performance</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🕒</text></svg>"
+    />
 
     <link rel="stylesheet" href="dist/reset.css" />
     <link rel="stylesheet" href="dist/reveal.css" />
@@ -77,6 +81,45 @@
           },
         ],
       });
+    </script>
+    <script>
+      let iconTracker = 0;
+      const timeIcons = [
+        "🕛",
+        "🕧",
+        "🕐",
+        "🕜",
+        "🕑",
+        "🕝",
+        "🕒",
+        "🕞",
+        "🕓",
+        "🕟",
+        "🕔",
+        "🕠",
+        "🕕",
+        "🕡",
+        "🕖",
+        "🕢",
+        "🕗",
+        "🕣",
+        "🕘",
+        "🕤",
+        "🕙",
+        "🕥",
+        "🕚",
+        "🕦",
+      ];
+      setInterval(() => {
+        if (iconTracker + 1 >= timeIcons.length - 1) {
+          iconTracker = 0;
+        } else {
+          iconTracker++;
+        }
+        document.querySelector(
+          'link[rel="icon"]'
+        ).href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${timeIcons[iconTracker]}</text></svg>`;
+      }, 5000);
     </script>
   </body>
 </html>
