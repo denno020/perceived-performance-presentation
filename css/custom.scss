@@ -5,3 +5,19 @@
 .reveal ul ul {
   list-style: none;
 }
+
+.reveal ul.leading-questions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
+  li {
+    padding: 15px 0;
+
+    &::before {
+      content: unset;
+    }
+
+  }
+}

@@ -366,5 +366,8 @@ gulp.task("serve", () => {
     gulp.series("css-core", "reload")
   );
 
+  // @TODO This doesn't seem to be working?
+  gulp.watch(["css/custom.scss"], gulp.series("css-custom", "reload"));
+
   gulp.watch(["test/*.html"], gulp.series("test"));
 });

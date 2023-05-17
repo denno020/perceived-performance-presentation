@@ -5,4 +5,4 @@
 *
 * Copyright (C) 2011-2023 Hakim El Hattab, https://hakim.se
 */
-.invisible{opacity:0}.reveal ul ul{list-style:none}
+.invisible{opacity:0}.reveal ul ul{list-style:none}.reveal ul.leading-questions{list-style:none;margin:0;padding:0;text-align:center}.reveal ul.leading-questions li{padding:15px 0}.reveal ul.leading-questions li::before{content:unset}
