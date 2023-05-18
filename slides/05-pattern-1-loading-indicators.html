@@ -3,11 +3,16 @@
   <ul>
     <li class="fragment">Not using loading indicators</li>
     <li class="fragment">Well using them sparingly</li>
+    <li class="fragment">Demo <sup>2</sup></li>
+    <li class="fragment">Show's exactly when a user is being made to wait</li>
+    <li class="fragment">Best of both worlds?</li>
+    <li class="fragment">Demo <sup>3</sup></li>
+
   </ul>
   <aside class="notes">
     <ul>
       <li>
-        The first pattern I want to talk about are loading indicators, more
+        The first actual pattern I want to talk about are loading indicators, more
         specifically, 🖱 not using loading indicators, 🖱 well using them
         sparingly
       </li>
@@ -16,128 +21,93 @@
         they are, but the overuse of them will lead to a perception of a slow
         website
       </li>
-      <li>Let's do a comparison</li>
+      <li>🖱Let's do a comparison</li>
       <li>
-        First, let's look again at our demo website and focus on one specific
+        📺 First, let's look again at our demo website and focus on one specific
         transition
       </li>
       <li>
-        When I click on a product on the category page, we are taken to the next
+        📺 When I click on a product on the category page, we are taken to the next
         view immediately, with a loading indicator being displayed to show that
         data is being loaded
       </li>
       <li>
-        Feels pretty fast, even with the added server delay, no reason to think
+        📺 Feels pretty fast, even with the added server delay, no reason to think
         that it would be perceived as slow
       </li>
-      <li>Users know exactly what is happening at all times</li>
+      <li>📺 Users know exactly what is happening at all times</li>
+      <li>📺 Now, let's have a look at this next example (Demo 3)</li>
       <li>
-        One issue that we can see as a quick aside is there is a lot of movement
-        as things are loaded in
+        📺 We have the same code, but we're not displaying a loading indicator
       </li>
       <li>
-        Notice that the footer starts pushed right up against the loading
-        indicator, and there is all this white space below the footer?
-      </li>
-      <li>
-        I'm sure I'm not along in saying this behaviour is seen very often
-        online
-      </li>
-      <li>
-        This layout jank will give the user the perception of poor performance
-      </li>
-      <li>
-        We could fix that by using CSS to give out website 100% height, then
-        push the footer to the bottom of the viewport, but even then, we still
-        see the whole footer and then we don't, it gets pushed out of the
-        viewport
-      </li>
-      <li>It's a jarring experience</li>
-      <li>
-        An improved pattern would be to use a skeleton loading UI, or simply
-        pushing the footer below the fole while content is loading.
-      </li>
-      <li>
-        It's unlikely that a page will be shorter than the viewport height of
-        the users device, so by not showing the footer as content is loading,
-        the user doesn't see things jumping all over the place, which makes the
-        site feel much more performant
-      </li>
-      <li>Now, let's have a look at this next example</li>
-      <li>
-        We have the same code, but we're not displaying a loading indicator
-      </li>
-      <li>
-        In this demo, I click on a product and then the very next thing that I
+        📺 In this demo, I click on a product and then the very next thing that I
         see, is that product
       </li>
-      <li>Did I have to wait? Did I perceive that I had to wait?</li>
-      <li>Which one feels faster?</li>
-      <li>This is exactly the situation we had with one of our clients</li>
+      <li>📺 Did I have to wait? Did I perceive that I had to wait?</li>
+      <li>📺 Which one feels faster?</li>
+      <li>📺 This is exactly the situation we had with one of our clients</li>
       <li>
-        They were comparing their website (that we built) with a competitors
+        📺 They were comparing their website (that we built) with a competitors
         website, and saying that the competitors was faster.
       </li>
       <li>
-        We were using a loading indicator as a result of all interactions where
+        📺 We were using a loading indicator as a result of all interactions where
         a user does have to wait
       </li>
-      <li>The competitors website wasn't</li>
+      <li>📺 The competitors website wasn't</li>
       <li>
-        Even though, looking at the raw numbers, the rquests in the website we
+        📺 Even though, looking at the raw numbers, the rquests in the website we
         built were resolving just as fast, and sometimes faster, the client felt
         that their site was slower, because they could see exatly when they were
         being made to wait
       </li>
       <li>
-        The issue that we had with the competitors implemenation, and the reason
+        📺 The issue that we had with the competitors implementation, and the reason
         we didn't want to go the same route, is that when a user clicks, nothing
         actually happens until the network request resolves.
       </li>
       <li>
-        As I'm using everything locally now, we're onlly waiting fo rthe forced
+        📺 As I'm using everything locally now, we're only waiting for the forced
         quarter second delay, but what if we were on a slower connection, where
         the request did take a few more moments to respond?
       </li>
-      <li>Or what if the user was on lie-fi?</li>
+      <li>📺 Or what if the user was on lie-fi?</li>
       <li>
-        They would click a link, and then see that nothing happens, so they
+        📺 They would click a link, and then see that nothing happens, so they
         wouldn't think that the website was working
       </li>
       <li>
-        They would likely click the link again, and again. Potentially creating
+        📺 They would likely click the link again, and again. Potentially creating
         multiple requests for the same thing, using up bandwidth, but almost
         certainly registering a rage click event in your analytics
       </li>
       <li>
-        So loading indicators are essential, but they can also be overused and
-        result in a perception of poor performance
+        🖱 So that's what I mean when I say that the overuse of loading indicators can give the perception
+        of poor performance, because users know exactly when they're being made to wait
       </li>
       <li>
-        As loading indicators, indicate loading, they can make an app feel
-        slower because the user see's exactly when they're being made to wait..
+        🖱 Could we combine both approaches and have the best of both worlds? 🖱
       </li>
+      <li>📺 Let me demonstrate by throttling my network connection</li>
       <li>
-        Could we combine both approaches and have the best of both worlds?
-      </li>
-      <li>
-        In this combined example, we don't display a loading indicator until
+        📺 In this combined example, we don't display a loading indicator until
         after the user has been waiting for a period of time
       </li>
       <li>
-        For users that have a fast connectoin, they won't see a loading
+        📺 For users that have a fast connectoin, they won't see a loading
         indicator
       </li>
       <li>
-        For users on a slow connection, they will see the loading indicator
+        📺 For users on a slow connection, they will see the loading indicator
         after 500ms, so they'll know that the website has received their input,
         and is currently processing it
       </li>
       <li>
-        The 500ms timeout is an arbitrary value, it's really up to your
+        📺 The 500ms timeout is an arbitrary value, it's really up to your
         situation what value you choose
       </li>
-      <li>Let me quickly demonstrate by throttling my network connection</li>
+      
     </ul>
   </aside>
 </section>

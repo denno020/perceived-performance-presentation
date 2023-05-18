@@ -1,18 +1,29 @@
 <section>
   <h2>Optimistically Update UI</h2>
+  <ul>
+    <li class="fragment">Assume everything wil work</li>
+    <li class="fragment">Immediately update local state</li>
+    <li class="fragment">Demo <sup>7</sup></li>
+    <li class="fragment">
+      Downsides?
+      <ul>
+        <li class="fragment">Action fails?</li>
+      </ul>
+    </li>
+  </ul>
   <aside class="notes">
     <ul>
       <li>
         Our transition between the category page and product page is pretty
         instantaneous now
       </li>
-      <li>Our <users></users> are going to be very happy</li>
+      <li>Our users are going to be very happy</li>
       <li>
         But what about when they add a product to cart, what does that
         experience look like?
       </li>
       <li>
-        Looking back at the demo website, we can see that upon clicking on the
+        📺 Looking back at the demo website, we can see that upon clicking on the
         Add to Cart button, the user has to wait for that API request to
         complete, before they can be sure that the item is added to cart, and
         then continue on with their shopping
@@ -26,12 +37,12 @@
         optimistically updating our UI
       </li>
       <li>
-        Optimistically being the operative word - assume everything is going to
+        Optimistically being the operative word - 🖱  assume everything is going to
         go perfectly according to plan on the server
       </li>
       <li>
-        Is we assume that, then in the example of adding an item to cart, we can
-        manually edit our local state to make it look like the item is already
+        If we assume that, then in the example of adding an item to cart, we can
+        🖱 manually edit our local state to make it look like the item is already
         added
       </li>
       <li>
@@ -49,10 +60,10 @@
       </li>
       <li>I think this is a pretty great experience</li>
       <li>
-        We should talk about the potential pitfalls to optimistically updating
+        🖱 We should talk about the potential pitfalls to optimistically updating
         the UI
       </li>
-      <li>The most obvious one being, what happens if the action fails?</li>
+      <li>The most obvious one being, what happens if the action fails? 🖱 </li>
       <li>
         What happens if, in this example, the item isn't added to cart on the
         server?
